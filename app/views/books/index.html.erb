@@ -1,7 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class ="container">
+  
+  <h1> Reading List </h1>
 
-<h1>Listing Books</h1>
-
+  <ol class ="breadcrumb">
+    <li class="avtive">
+      Books
+    </li>
+  </ol>
+  <div class ='row'>
+    <div class='col-sm-12'>
+      <p>
+        <form>
+          <legend>Search</legend>
+          <div class='col-xs-4'>
+            <input type='text' class ='form-control' value='<%= params[:keyword]%>' name='keyword' placeholder='Keyword'>
+          </div>
+        </form>
+      </p>
+    </div>
 <table>
   <thead>
     <tr>
@@ -32,3 +48,4 @@
 <br>
 
 <%= link_to 'New Book', new_book_path %>
+</div>

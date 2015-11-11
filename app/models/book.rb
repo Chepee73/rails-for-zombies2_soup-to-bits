@@ -1,8 +1,13 @@
 class Book < ActiveRecord::Base
+
+	has_many :book_genres
+	has_many :genres, through: :book_genres
+
 	scope :finished, ->{ where.not(finished_on: nil) }
 	scope :recent, ->{ where('finished_on > ?', 2.days.ago)}
 	scope :search, ->(keyword){ where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present?}
-
+	scope :filter, ->(title){
+		joins(:genres).where('genres.name = ?', title) if title.present?}
 
 	before_save :set_keywords
 

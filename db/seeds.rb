@@ -6,8 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Book.destroy_all
+Genre.destroy_all
 
-
+fiction = Genre.create!(name: 'Fiction')
+non_fiction = Genre.create!(name: 'Non-Fiction')
+adventure = Genre.create!(name: 'Adventure')
+sci_fi = Genre.create!(name: 'Science-Fiction')
 Book.create!([{
   title: "Hyperion",
   author: "Dan Simmons",
@@ -16,7 +20,8 @@ to The Canterbury Tales, in which a series of stories are told by the main chara
 to the larger storyline. The score of the story is ambitious - spanning time, planets religion and love.",
   amazon_id: "0553283685",
   rating: 4,
-  finished_on: nil
+  finished_on: nil,
+  genres: [fiction, sci_fi]
   },
   {
     title: "The name of the wind",
@@ -25,6 +30,9 @@ to the larger storyline. The score of the story is ambitious - spanning time, pl
 a legend, this book is narred by Kvothe itself since the beggining of his life... and maybe the end.",
     amazon_id: "0756404746",
     rating: 5,
-    finished_on: 2.months.ago
+    finished_on: 2.months.ago,
+    genres: [fiction, adventure]
   }
 ])
+
+p "Created #{Book.count} books."

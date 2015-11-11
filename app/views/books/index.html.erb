@@ -36,10 +36,6 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= book.description %></td>
-        <td><%= book.amazon_id %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -47,5 +43,14 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path %>
+  <div class="col-sm-4">
+    <h2> Genres</h2>
+    <ul class="list-unystyled">
+      <%= @genres.each do |genre| %>
+        <li>
+          <%= link_to genre.name, books_path(filter: genre.name), class: 'label label-primary' %>
+        </li>
+      <% end %>
+     </ul>
+  </div>
 </div>
